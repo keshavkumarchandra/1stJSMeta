@@ -1,0 +1,50 @@
+// create a variable to hold your NFTs
+let nftCollection = [];
+
+// this function will take in some values as parameters, create an
+// NFT object using the parameters passed to it for its metadata, 
+// and store it in the variable above.
+function mintNFT(animeTitle, creatorName, publishYear) {
+    // Basic validation
+    if (!animeTitle || !creatorName || !publishYear) {
+        console.error("All fields are required to mint an NFT.");
+        return;
+    }
+
+    let nft = {
+        "animeTitle": animeTitle,
+        "creatorName": creatorName,
+        "publishYear": publishYear
+    };
+    nftCollection.push(nft);
+}
+
+// create a "loop" that will go through an "array" of NFTs
+// and print their metadata with console.log()
+function listNFTs() {
+    if (nftCollection.length === 0) {
+        console.log("No NFTs minted yet.");
+        return;
+    }
+
+    console.log("\n_________NFTs_________\n");
+    for (let i = 0; i < nftCollection.length; i++) {
+        console.log(`NFT ${i + 1}:`);
+        console.log(` Anime Title: ${nftCollection[i].animeTitle}`);
+        console.log(` Creator Name: ${nftCollection[i].creatorName}`);
+        console.log(` Publish Year: ${nftCollection[i].publishYear}\n`);
+    }
+}
+
+// print the total number of NFTs we have minted to the console
+function getTotalSupply() {
+    console.log("Total NFTs Minted: " + nftCollection.length + "\n");
+}
+
+// call your functions below this line
+mintNFT("Jujutsu Kaisen", "Gege Akutami", "5 Mar 2018");
+mintNFT("Solo Leveling", "Chugong", "25 July 2016");
+mintNFT("Attack on Titan", "Yasuko Kobayashi", "7 April 2016");
+mintNFT("Naruto", "Masashi Kishimoto", "21 September 1999");
+listNFTs();
+getTotalSupply();
